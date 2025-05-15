@@ -1,0 +1,7 @@
+from .config import (
+    GEMINI_API_KEY,
+    TELEGRAM_BOT_TOKEN,
+    TELEGRAM_CHAT_ID,
+    ELEVENLABS_API_KEY,
+    VOICE_ID
+)

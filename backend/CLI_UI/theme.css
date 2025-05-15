@@ -1,0 +1,67 @@
+/* btop-inspired Dark Theme */
+
+/* Global defaults */
+* {
+  color: #d0d0d0;
+  background: #2b2b2b;
+  border: none;
+}
+
+/* Menu bar styling */
+#menu_bar {
+  height: 1;
+  background: #3c3f58;
+  border: none;
+  padding: 0 1;
+  content-align: center middle;
+}
+
+/* Buttons in the menu bar */
+#menu_bar Button {
+  background: #3c3f58;
+  color: #b8b8b8;
+  border: none;
+  padding: 0 2;
+  margin: 0 1;
+  content-align: center middle;
+}
+
+/* Highlight current menu tab (first button) */
+#menu_bar Button:first-child {
+  background: #5f5fa0;
+  color: #ffffff;
+}
+
+/* Highlight on hover or focus */
+#menu_bar Button:hover,
+#menu_bar Button:focus {
+  background: #4a4d7a;
+  color: #ffffff;
+}
+
+/* Output widget styling */
+#output {
+  background: #252535;
+  color: #c0c0c0;
+}
+/* Status widget styling */
+#status {
+  background: #2b2b3b;
+  color: #e0e0e0;
+}
+/* Optional accent class for emphasized text */
+.accent {
+  color: #6f9f6f;
+}
+
+LoadingIndicator {
+  dock: right;
+  width: 0;
+  color: #2b2b2b;
+  background: #2b2b2b;
+}
+
+/* Hide Textual loading spinner */
+LoadingIndicator {
+  display: none;
+}
