@@ -1,5 +1,5 @@
 import requests
-from config.config import ELEVENLABS_API_KEY, VOICE_ID
+from backend.config.config import ELEVENLABS_API_KEY, VOICE_ID
 
 class ElevenLabsClient:
     def __init__(self, api_key=ELEVENLABS_API_KEY, voice_id=VOICE_ID):

@@ -2,11 +2,11 @@
 # Файл для создания и регистрации всех зависимостей: клиентов, сервисов, парсеров.
 # Возвращает словарь (или кастомный DI-контейнер), который используется в других частях проекта.
 
-from clients.telegram_client import TelegramClient
-from clients.el_labs_client import ElevenLabsClient
-from clients.news_parser import get_news_headlines
-from clients.gemini_client import get_gemini_response
-from prompts.prompts import build_prompt
+from backend.clients.telegram_client import TelegramClient
+from backend.clients.el_labs_client import ElevenLabsClient
+from backend.clients.news_parser import get_news_headlines
+from backend.clients.gemini_client import get_gemini_response
+from backend.prompts.prompts import build_prompt
 
 def register_dependencies():
     container = {}

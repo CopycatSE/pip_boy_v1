@@ -1,5 +1,5 @@
 import requests
-from config.config import TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID
+from backend.config.config import TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID
 
 class TelegramClient:
     def __init__(self, token=TELEGRAM_BOT_TOKEN, chat_id=TELEGRAM_CHAT_ID):

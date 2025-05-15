@@ -1,5 +1,5 @@
 import requests
-from config.config import GEMINI_API_KEY
+from backend.config.config import GEMINI_API_KEY
 
 def get_gemini_response(prompt):
     url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={GEMINI_API_KEY}"
