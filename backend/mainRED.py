@@ -1,5 +1,5 @@
-from prompts.prompts import BUNKER_INTRO
-from clients.news_parser import get_news_headlines
+from backend.prompts.news_prompts import BUNKER_INTRO
+from backend.parsers.news_parser import get_news_headlines
 from clients.gemini_client import get_gemini_response
 from clients.telegram_client import send_telegram_message, send_telegram_audio
 from clients.el_labs_client import generate_audio_from_text
