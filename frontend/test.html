@@ -49,12 +49,14 @@
     <div id="output">Waiting for transmission...</div>
 
     <script>
+      const API_BASE = "http://localhost:5000";
+
       async function startBunker() {
         const output = document.getElementById("output");
         output.textContent = "Contacting bunker...";
 
         try {
-          const response = await fetch("/bunker");
+          const response = await fetch(`${API_BASE}/bunker`);
           if (!response.ok) throw new Error(`Server error: ${response.status}`);
 
           const data = await response.json();
@@ -70,7 +72,7 @@
         output.textContent = "Requesting audio transmission...";
 
         try {
-          const response = await fetch("/bunker/audio");
+          const response = await fetch(`${API_BASE}/bunker/audio`);
           if (!response.ok) throw new Error(`Server error: ${response.status}`);
 
           const blob = await response.blob();

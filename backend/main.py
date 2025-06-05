@@ -14,11 +14,27 @@ container = register_dependencies()
 @app.route("/bunker", methods=["GET"])
 @cross_origin()
 def bunker_route():
-    headlines, response = asyncio.run(run_bunker_sequence(container))
-    return jsonify({
-        "headlines": headlines,
-        "response": response
-    })
+    try:
+        result = asyncio.run(run_bunker_sequence(container))
+        if isinstance(result, tuple) and len(result) == 2:
+            headlines, response = result
+        elif isinstance(result, dict):
+            headlines = result.get("headlines", [])
+            response = result.get("response", "⛔️ No broadcast received from the bunker.")
+        else:
+            headlines = []
+            response = "⛔️ Unexpected response format from the bunker."
+
+        return jsonify({
+            "headlines": headlines,
+            "response": response
+        })
+
+    except Exception as e:
+        return jsonify({
+            "headlines": [],
+            "response": f"🚨 Error: {str(e)}"
+        }), 500
 
 
 # New route for serving audio file
