@@ -54,7 +54,7 @@
         output.textContent = "Contacting bunker...";
 
         try {
-          const response = await fetch("http://localhost:5000/bunker");
+          const response = await fetch("/bunker");
           if (!response.ok) throw new Error(`Server error: ${response.status}`);
 
           const data = await response.json();
@@ -70,7 +70,7 @@
         output.textContent = "Requesting audio transmission...";
 
         try {
-          const response = await fetch("http://localhost:5000/bunker/audio");
+          const response = await fetch("/bunker/audio");
           if (!response.ok) throw new Error(`Server error: ${response.status}`);
 
           const blob = await response.blob();
