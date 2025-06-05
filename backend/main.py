@@ -33,21 +33,18 @@ import socket
 
 # system configurations
 
-# This block  finds a free port in the specified range (default: 5000-5100) for CORS implementation.
+# This block sets the CORS port to a fixed value (5000).
 def find_free_port(start=5000, end=5100):
-    for port in range(start, end):
-        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-            if s.connect_ex(('localhost', port)) != 0:
-                return port
-    raise RuntimeError("No free port found in the specified range")
+    # Always return 5000 for CORS usage
+    return 5000
 
 import argparse
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Run Flask API for Pip-Boy")
-    parser.add_argument("--port", type=int, help="Port number to run the server on (default: first free port starting from 5000)")
+    parser.add_argument("--port", type=int, help="Port number to run the server on (default: 5000)")
     args = parser.parse_args()
 
-    selected_port = args.port if args.port else find_free_port()
+    selected_port = args.port if args.port else 5000
     print(f" Starting server on port {selected_port}")
     app.run(host="0.0.0.0", port=selected_port)
