@@ -5,7 +5,7 @@
 import requests
 import json
 import base64
-from config import GEMINI_API_KEY
+from backend.config.config import GEMINI_API_KEY
 
 def gemini_text_to_speech(text, output_path="output.mp3"):
     # Using Gemini 2.5 Flash Preview model with TTS endpoint
