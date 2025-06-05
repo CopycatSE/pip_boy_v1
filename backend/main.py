@@ -1,17 +1,18 @@
 from flask import Flask, jsonify
 from flask import send_file
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 import asyncio
 from backend.dependencies import register_dependencies
 from backend.core.fallout_news_logic import run_bunker_sequence
 
 app = Flask(__name__)
 # Allow all origins for development purposes (consider tightening this in production)
-CORS(app)
+CORS(app, resources={r"/bunker*": {"origins": "*"}})
 
 container = register_dependencies()
 
 @app.route("/bunker", methods=["GET"])
+@cross_origin()
 def bunker_route():
     headlines, response = asyncio.run(run_bunker_sequence(container))
     return jsonify({
@@ -22,6 +23,7 @@ def bunker_route():
 
 # New route for serving audio file
 @app.route("/bunker/audio", methods=["GET"])
+@cross_origin()
 def bunker_audio():
     try:
         return send_file("output.mp3", mimetype="audio/mpeg")
