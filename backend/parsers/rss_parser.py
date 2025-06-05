@@ -1,7 +1,7 @@
 
 import requests
 import xml.etree.ElementTree as ET
-from config.config import RSS_FEED_URL
+from backend.config.config import RSS_FEED_URL
 
 
 
