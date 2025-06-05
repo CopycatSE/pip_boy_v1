@@ -23,5 +23,5 @@ if __name__ == "__main__":
     headlines, response = asyncio.run(run_bunker_sequence(container))
 
 
-    print("\n GEMINI RESPONSE:")
+    print("\n ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿:")
     print(response)

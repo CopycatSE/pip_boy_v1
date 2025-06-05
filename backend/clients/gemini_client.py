@@ -12,7 +12,7 @@ def get_gemini_response(prompt):
         try:
             return response_json['candidates'][0]['content']['parts'][0]['text']
         except (KeyError, IndexError) as e:
-            print(f"⚠️ Gemini Response Parsing Error: {e}")
+            print(f" Gemini Response Parsing Error: {e}")
             print("Full response:", response_json)
             return "Error: Unexpected response format from Gemini API."
     except Exception as e:

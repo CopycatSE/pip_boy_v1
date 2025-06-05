@@ -59,5 +59,5 @@ def get_news_headlines(max_items=5):
         return f"Failed to fetch the latest news: {e}"
 
 if __name__ == "__main__":
-    print("🔍 Checking if LSM news headlines are fetched...")
-    print("🔥 HEADLINES:\n", get_news_headlines())
+    print(" Checking if LSM news headlines are fetched...")
+    print(" HEADLINES:\n", get_news_headlines())
