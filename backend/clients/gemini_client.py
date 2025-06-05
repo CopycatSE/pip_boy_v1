@@ -2,6 +2,10 @@ import requests
 from backend.config.config import GEMINI_API_KEY
 
 def get_gemini_response(prompt):
+    if not GEMINI_API_KEY:
+        print("Gemini API key not provided, skipping API call")
+        return "No Gemini API key provided."
+
     url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={GEMINI_API_KEY}"
     headers = {"Content-Type": "application/json"}
     data = {"contents": [{"parts": [{"text": prompt}]}]}

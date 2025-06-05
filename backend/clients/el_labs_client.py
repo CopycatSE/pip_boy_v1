@@ -7,6 +7,9 @@ class ElevenLabsClient:
         self.voice_id = voice_id
 
     def generate_audio(self, text, filename='bunker_audio.mp3'):
+        if not self.api_key or not self.voice_id:
+            print("ElevenLabs credentials not provided, skipping audio generation")
+            return None
         url = f"https://api.elevenlabs.io/v1/text-to-speech/{self.voice_id}"
         headers = {
             "xi-api-key": self.api_key,
