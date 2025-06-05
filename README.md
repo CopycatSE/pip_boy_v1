@@ -29,10 +29,12 @@ You can install the required packages using:
 Create a `.env` file in the root directory of the project and include the following variables:
 
     GEMINI_API_KEY=your_google_gemini_api_key
-    ELEVENLABS_API_KEY=your_elevenlabs_api_key
+    ELEVENLABS_API_KEY=your_elevenlabs_api_key (optional)
     VOICE_ID=your_elevenlabs_voice_id (optional, default is '2EiwWnXFnvU5JabPnv8n')
-    TELEGRAM_BOT_TOKEN=your_telegram_bot_token
-    TELEGRAM_CHAT_ID=your_telegram_chat_id
+    TELEGRAM_BOT_TOKEN=your_telegram_bot_token (optional)
+    TELEGRAM_CHAT_ID=your_telegram_chat_id (optional)
+
+You can copy `backend/.env.example` and fill in the values. If Telegram or ElevenLabs credentials are omitted, the script will skip sending messages and audio.
 
 ## How to Run
 

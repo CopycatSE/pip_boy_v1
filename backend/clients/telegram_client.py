@@ -7,6 +7,9 @@ class TelegramClient:
         self.chat_id = chat_id
 
     def send_message(self, text):
+        if not self.token or not self.chat_id:
+            print("Telegram credentials not provided, skipping send_message")
+            return
         url = f"https://api.telegram.org/bot{self.token}/sendMessage"
         payload = {'chat_id': self.chat_id, 'text': text}
         try:
@@ -16,6 +19,9 @@ class TelegramClient:
             print(f"Error sending message to Telegram: {e}")
 
     def send_audio(self, audio_path):
+        if not self.token or not self.chat_id:
+            print("Telegram credentials not provided, skipping send_audio")
+            return
         url = f"https://api.telegram.org/bot{self.token}/sendAudio"
         try:
             with open(audio_path, 'rb') as audio_file:
