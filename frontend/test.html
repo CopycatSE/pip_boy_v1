@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Pip-Boy Terminal</title>
+    <style>
+      body {
+        background-color: #000000;
+        color: #00ff88;
+        font-family: "DepartureMono Nerd Font", monospace;
+        font-size: 12pt;
+        padding: 2rem;
+      }
+      button {
+        padding: 1rem 2rem;
+        font-family: "DepartureMono Nerd Font", monospace;
+        background-color: #00ff88;
+        color: #000000;
+        font-size: 12pt;
+        border: none;
+        cursor: pointer;
+      }
+      #output {
+        margin-top: 2rem;
+        white-space: pre-wrap;
+        background-color: #000000;
+        padding: 1rem;
+        border: 1px solid #00ff88;
+      }
+      @font-face {
+        font-family: "DepartureMono Nerd Font";
+        src: url("./assets/fonts/DepartureMonoNerdFont-Regular.otf")
+          format("truetype");
+        font-weight: normal;
+        font-style: normal;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Pip-Boy Broadcast</h1>
+    <button onclick="startBunker()">Start</button>
+    <button onclick="playAudio()">Play Audio</button>
+    <audio
+      id="bunker-audio"
+      controls
+      style="display: none; margin-top: 1rem"
+    ></audio>
+
+    <div id="output">Waiting for transmission...</div>
+
+    <script>
+      async function startBunker() {
+        const output = document.getElementById("output");
+        output.textContent = "Contacting bunker...";
+
+        try {
+          const response = await fetch("http://localhost:5001/bunker");
+          if (!response.ok) throw new Error(`Server error: ${response.status}`);
+
+          const data = await response.json();
+          output.textContent = `⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿:\n${data.response}`;
+        } catch (err) {
+          output.textContent = `Error: ${err.message}`;
+        }
+      }
+
+      async function playAudio() {
+        const audioElement = document.getElementById("bunker-audio");
+        const output = document.getElementById("output");
+        output.textContent = "Requesting audio transmission...";
+
+        try {
+          const response = await fetch("http://localhost:5001/bunker/audio");
+          if (!response.ok) throw new Error(`Server error: ${response.status}`);
+
+          const blob = await response.blob();
+          const audioURL = URL.createObjectURL(blob);
+          audioElement.src = audioURL;
+          audioElement.style.display = "block";
+          audioElement.play();
+          output.textContent = "Audio transmission playing...";
+        } catch (err) {
+          output.textContent = `Audio Error: ${err.message}`;
+        }
+      }
+    </script>
+  </body>
+</html>
