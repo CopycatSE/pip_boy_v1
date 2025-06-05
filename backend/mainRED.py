@@ -1,8 +1,8 @@
 from backend.prompts.news_prompts import BUNKER_INTRO
 from backend.parsers.news_parser import get_news_headlines
-from clients.gemini_client import get_gemini_response
-from clients.telegram_client import send_telegram_message, send_telegram_audio
-from clients.el_labs_client import generate_audio_from_text
+from backend.clients.gemini_client import get_gemini_response
+from backend.clients.telegram_client import send_telegram_message, send_telegram_audio
+from backend.clients.el_labs_client import generate_audio_from_text
 
 def job():
     news_info = get_news_headlines()
