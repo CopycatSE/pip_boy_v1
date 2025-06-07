@@ -7,9 +7,9 @@ container = register_dependencies()
 def job():
     headlines, response = asyncio.run(run_bunker_sequence(container))
     telegram = container["telegram"]
-    elevenlabs = container["elevenlabs"]
+    google_tts = container["google_tts"]
     telegram.send_message(response)
-    audio_file = elevenlabs.generate_audio(response)
+    audio_file = google_tts.generate_audio(response)
     if audio_file:
         telegram.send_audio(audio_file)
 
